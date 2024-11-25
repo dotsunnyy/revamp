@@ -1,4 +1,5 @@
 body {
     font-family: "Noto Sans", sans-serif;
-    background-image: 1017.png; background-repeat: repeat;
+   background-image: url(background.png);
+   background-repeat: repeat;
 }
