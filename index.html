@@ -43,6 +43,12 @@
         <li><a class="button" href="../revamp/1on1soccer.html">1-on-1 soccer</a></li>
         <hr>
 
+        <button id="image"> </button>
+        <div id="foo"> </div>
+
+        <script>$('#image').click(function() {
+          $('#foo').addClass('myClass');
+        });</script>
 
 
 <script>
@@ -118,6 +124,10 @@ document.body.addEventListener("keydown", function (event) {
         list-style-type: none;}
 
       body {background-color: white;}
+
+      .myClass {
+  background-image: url(bg.png);
+}
       </style>
 
 </body>
