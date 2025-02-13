@@ -1,27 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Save Div as Image</title>
-    <style>
-        #content-to-capture {
-            width: 300px;
-            height: 300px;
-            
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+<head> <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+<script src="https://github.com/eligrey/FileSaver.js/"></script>
 
-        button {
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-
-    <div id="content-to-capture">
 <style>
   @keyframes spin {
     100% {
@@ -54,26 +33,20 @@
   <img class="vinyl" src="https://precision-pressing.s3.us-east-2.amazonaws.com/2023/10/PRP_MIX_WHIRLPOOL.jpg"/>
   <img class="vinylCover" src="https://media.tenor.com/Pv_tbZ5USWoAAAAM/magdalena-bay-imaginal-disk.gif"/>
 </div>
-    </div>
 
-    <button onclick="saveDivAsImage()">Save as Image</button>
+<button onclick="btnSave()">Click me</button>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script> $(function() { 
+    $("#btnSave").click(function() { 
+        html2canvas($("#recordPlayer"), {
+            onrendered: function(canvas) {
+                theCanvas = canvas;
 
-    <script>
-        function saveDivAsImage() {
-            var content = document.getElementById("content-to-capture");
 
-            html2canvas(content, {
-                onrendered: function(canvas) {
-                    var link = document.createElement('a');
-                    link.href = canvas.toDataURL('image/png');
-                    link.download = 'captured-image.png';
-                    link.click();
-                }
-            });
-        }
-    </script>
-
-</body>
-</html>
+                canvas.toBlob(function(blob) {
+                    saveAs(blob, "Dashboard.png"); 
+                });
+            }
+        });
+    });
+}); </script>
